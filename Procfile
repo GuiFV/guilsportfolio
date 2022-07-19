@@ -1,0 +1,1 @@
+web: gunicorn guilsportfolio.wsgi --log-file -
