@@ -105,7 +105,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'pt-br'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'UTC'
 
@@ -130,16 +130,16 @@ JAZZMIN_SETTINGS = {
     "show_ui_builder": True,
 
     # title of the window (Will default to current_admin_site.site_title if absent or None)
-    "site_title": "guilsportfolio",
+    "site_title": "Guil's Portfolio",
 
     # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
-    "site_header": "guilsportfolio",
+    "site_header": "Guil's Portfolio",
 
     # Title on the brand (19 chars max) (defaults to current_admin_site.site_header if absent or None)
-    "site_brand": "guilsportfolio Admin",
+    "site_brand": "Portfolio Admin",
 
     # Logo to use for your site, must be present in static files, used for brand on top left
-    "site_logo": "",
+    "site_logo": "img/logo.png",
 
     # Logo to use for your site, must be present in static files, used for login form logo (defaults to site_logo)
     "login_logo": "",
@@ -157,7 +157,7 @@ JAZZMIN_SETTINGS = {
     "welcome_sign": "",
 
     # Copyright on the footer
-    "copyright": "guilsportfolio",
+    "copyright": "Guilherme Forton Viotti",
 
     # The model admin to search from the search bar, search bar omitted if excluded
     # "search_model": "auth.User",
@@ -166,16 +166,20 @@ JAZZMIN_SETTINGS = {
     "topmenu_links": [
 
         # Url that gets reversed (Permissions can be added)
-        {"name": "guilsportfolio Website",  "url": "home"},
+        {"name": "Portfolio Home",  "url": "home"},
     ],
 
     # Field name on user model that contains avatar ImageField/URLField/Charfield or a callable that receives the user
     "user_avatar": None,
 
     # List of apps (and/or models) to base side menu ordering off of (does not need to contain all apps/models)
-    # "order_with_respect_to": [
-    #     "core.model_name1",
-    #     "core.model_name2",],
+    "order_with_respect_to": [
+        "core.profile",
+        "core.project",
+        "core.expertise",
+        "core.competency",
+        "core.technologies",
+    ],
 
     # Use modals instead of popups
     "related_modal_active": False,

@@ -1,1 +1,40 @@
+.main-body {
+    margin-top: 30px;
+}
 
+h6 .expertise {
+    margin: 0 10px 0 10px;
+}
+
+.about-me {
+    padding: 60px;
+}
+
+.project-row {
+    margin-bottom: 50px;
+}
+
+.img-frame {
+    margin-right: 15px;
+}
+
+.subtitle {
+    font-size: 1.3em;
+}
+
+.nav-btn {
+    margin-bottom: 15px;
+}
+
+.social-icons {
+    margin: 0 10px 0 10px;
+}
+
+p .project-badge {
+    font-size: 0.7em;
+}
+
+a .new-tab {
+    margin-left: 15px;
+    font-size: 1em;
+}
