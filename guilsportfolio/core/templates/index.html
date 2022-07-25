@@ -4,20 +4,21 @@
 
     {% include 'modals.html' %}
 
-    <div class="row justify-content-md-center">
-        <div class="col col-md-auto text-center">
-            <h3>{{ profile.0 }}</h3>
-            <hr>
-            <h6>
-                {% for expertise in profile.0.areas_of_expertise.all %}
-                    <span class="expertise">{{ expertise }}</span>
-                {% endfor %}
-            </h6>
-            <p class="about-me">
-                <button class="btn btn-outline-dark btn-xs btn-shaped shadow-4" data-target="#navdrawerDefault" data-toggle="navdrawer" type="button">about me</button>
-            </p>
+        <div class="row justify-content-md-center">
+            <div class="col col-md-auto text-center">
+                <h3>{{ profile.0 }}</h3>
+                <hr>
+                <h6>
+                    {% for expertise in profile.0.areas_of_expertise.all %}
+                        <span class="expertise">{{ expertise }}</span>
+                    {% endfor %}
+                </h6>
+                <p class="about-me">
+                    <button class="btn btn-outline-dark btn-xs btn-shaped shadow-4" data-target="#navdrawerDefault" data-toggle="navdrawer" type="button">about me</button>
+                </p>
+            </div>
         </div>
-    </div>
+
 
 
     {% for project in projects|dictsort:"project_position" %}
