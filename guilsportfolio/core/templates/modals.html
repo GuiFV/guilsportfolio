@@ -28,6 +28,7 @@
                     {% for item in profile.0.competencies.all %}
                         <div class="col-3 my-4 text-center">
                             <img loading="lazy" class="img-fluid img-frame social-icons" height="50px" width="50px" src="{{ item.icon }}" alt="{{ item.competency }}">
+                            <br>
                             {{ item.competency }}
                         </div>
                     {% endfor %}
