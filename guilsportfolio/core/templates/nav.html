@@ -1,42 +1,51 @@
 <div aria-hidden="true" class="navdrawer" id="navdrawerDefault" tabindex="-1">
     <div class="navdrawer-content">
         <div class="navdrawer-header">
-            <img loading="lazy" class="img-fluid img-frame" height="240px" width="240px" src="{{ profile.0.picture }}" alt="picture of {{ profile.0.name }}">
+            <img loading="lazy" class="img-fluid img-frame" height="240px" width="240px" src="{{ profile.picture }}" alt="picture of {{ profile.name }}">
         </div>
 
         <nav class="navdrawer-nav">
             <div class="row">
                 <div class="col text-center">
-                    <a href="{{ profile.0.github_link }}" target="_blank">
+                    <a href="{{ profile.github_link }}" target="_blank">
                         <img loading="lazy" class="img-fluid social-icons" height="50px" width="50px" src="https://www.dropbox.com/s/vx3s4kcbozyua6s/github.png?raw=1" alt="github">
                     </a>
-                    <a href="{{ profile.0.linkedin_link }}" target="_blank">
+                    <a href="{{ profile.linkedin_link }}" target="_blank">
                         <img loading="lazy" class="img-fluid social-icons" height="50px" width="50px" src="https://www.dropbox.com/s/2ic18fdnxj8b63w/linkedin.png?raw=1" alt="linkedin">
                     </a>
-                    <a href="mailto:{{ profile.0.email }}" target="_blank">
+                    <a href="mailto:{{ profile.email }}" target="_blank">
                         <img loading="lazy" class="img-fluid social-icons" height="50px" width="50px" src="https://www.dropbox.com/s/oc1x8p53rrvsc9r/email.png?raw=1" alt="email">
                     </a>
                 </div>
             </div>
-
-
         </nav>
+
         <div class="navdrawer-divider"></div>
+
         <div class="row">
             <div class="col">
-                <ul class="navdrawer-nav text-center">
-                    <li class="nav-item nav-btn">
-                        <button type="button" class="btn btn-outline-dark w-75 shadow-4" data-toggle="modal" data-target="#BioModal">
-                            Bio
-                        </button>
-                    </li>
+                <ul class="navdrawer-nav">
                     <li class="nav-item">
-                        <button type="button" class="btn btn-outline-dark w-75 shadow-4" data-toggle="modal" data-target="#CompetenciesModal">
-                            Competencies
-                        </button>
+                        <p class="bio">{{ profile.bio }}</p>
+                    </li>
+                    <br>
+                    <li class="nav-item">
+                        <div class="row">
+                            <div class="col col-12 text-center">
+                                <h6>Competencies</h6>
+                                {% for item in profile.competencies.all %}
+                                    <figure class="figure">
+                                        <img loading="lazy" class="img-fluid img-frame social-icons my-2" height="50px" width="50px" src="{{ item.icon }}" alt="{{ item.competency }}">
+                                        <br>
+                                        {{ item.competency }}
+                                    </figure>
+                                {% endfor %}
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </div>
         </div>
+
     </div>
 </div>

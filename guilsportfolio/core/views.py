@@ -2,16 +2,13 @@ from django.shortcuts import render
 from guilsportfolio.core.models import Profile, Project
 
 """
-The system is designed so it renders only one profile.
-It was preferable to select the profile by username instead of an arbitrary instance
+The system is designed to render only one profile (the first on Database)
 """
 
 
 def home(request):
-    portfolio_username = 'Guilherme Forton Viotti'
-
-    profile = Profile.objects.filter(name=portfolio_username)
-    projects = Project.objects.filter(project_executive__name=portfolio_username)
+    profile = Profile.objects.first()
+    projects = Project.objects.filter(project_executive__name=profile.name)
 
     context = {
         'profile': profile,

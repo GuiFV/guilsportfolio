@@ -2,14 +2,12 @@
 {% load static %}
 {% block content %}
 
-    {% include 'modals.html' %}
-
         <div class="row justify-content-md-center">
             <div class="col col-md-auto text-center">
-                <h3>{{ profile.0 }}</h3>
+                <h3>{{ profile }}</h3>
                 <hr>
                 <h6>
-                    {% for expertise in profile.0.areas_of_expertise.all %}
+                    {% for expertise in profile.areas_of_expertise.all %}
                         <span class="expertise">{{ expertise }}</span>
                     {% endfor %}
                 </h6>
@@ -24,7 +22,7 @@
             <div class="row project-row">
                 <div class="col">
                     <div class="media">
-                        <img loading="lazy" class="img-fluid img-frame" height="240px" width="240px" src="{{ project.project_image }}" alt="image of project '{{ project.title }}'">
+                        <img loading="lazy" class="img-fluid img-frame border" height="240px" width="240px" src="{{ project.project_image }}" alt="image of project '{{ project.title }}'">
                         <div class="media-body">
                             <h4 class="mt-0"><b>{{ project.project_title }}</b></h4>
                             <p class="subtitle">{{ project.project_subtitle }}
