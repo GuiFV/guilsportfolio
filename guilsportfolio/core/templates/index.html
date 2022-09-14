@@ -12,10 +12,14 @@
                     {% endfor %}
                 </h6>
                 <p class="about-me">
-                    <button class="btn btn-outline-dark btn-xs btn-shaped shadow-4" data-target="#navdrawerDefault" data-toggle="navdrawer" type="button">about me</button>
+                    <button class="btn btn-info btn-xs btn-shaped shadow-4" data-target="#navdrawerDefault" data-toggle="navdrawer" type="button">about me</button>
                 </p>
             </div>
         </div>
+    <div class="portfolio_title">
+        <h4><b>Portfolio</b></h4>
+    </div>
+
 
     {% for project in projects|dictsort:"project_position" %}
         {% if project.show_or_hide %}
