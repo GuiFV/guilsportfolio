@@ -51,7 +51,7 @@
                             </p>
                             <p>{{ project.description }}</p>
                             {% if project.link and project.button_description %}
-                                <a href="{{ project.project_link }}" class="btn btn-outline-dark btn-shaped btn-xs shadow-4" target="_blank">
+                                <a href="{{ project.link }}" class="btn btn-outline-dark btn-shaped btn-xs shadow-4" target="_blank">
                                     {{ project.button_description }} <span class="material-icons-round new-tab">open_in_new</span>
                                 </a>
                             {% endif %}

@@ -2,7 +2,7 @@
 
 ## Build from ground up with no front-end templates
 
-https://guilsportfolio.herokuapp.com/
+https://gfv.bio/
 
 Contains:
 - Material Design with Boostrap framework
@@ -43,7 +43,7 @@ python manage.py test
 3. Define secure SECRET_KEY
 4. Define DEBUG=False
 5. Define ALLOWED_HOSTS=.herokuapp.com
-6. Push code to heroku
+6. Push code to Heroku
 
 ````console
 heroku create your_app_name
