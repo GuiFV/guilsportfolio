@@ -6,7 +6,7 @@ from guilsportfolio.core.models import Profile, Project
 
 def home(request):
 
-    profile = Profile.objects.first()  # Only the first Profile inserted in the database renders
+    profile = Profile.objects.first()  # Only one Profile is allowed in the DB
     projects = Project.objects.filter(project_executive__name=profile.name)
     display = None  # For filtering expertises and manipulating button's logic
 

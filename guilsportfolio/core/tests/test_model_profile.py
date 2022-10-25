@@ -38,6 +38,11 @@ class ProfileModelTest(TestCase):
     def test_create_profile(self):
         self.assertTrue(Profile.objects.exists())
 
+    def test_create_more_than_one_profile(self):
+        """There can only be one Profile"""
+        self.profile2 = Profile.objects.create(id=2, name="Profile2")
+        self.assertTrue(2, self.profile2)
+
     def test_blank_fields(self):
         for field in self.blank_fields:
             test_field = Profile._meta.get_field(field)

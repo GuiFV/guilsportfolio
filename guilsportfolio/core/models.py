@@ -1,8 +1,9 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 
 
 class Profile(models.Model):
-    """ Designed so you can access all data through Profile """
+    """ Access all data through Profile """
     name = models.CharField(max_length=50, null=True)
     nickname = models.CharField(max_length=20, null=True)
     areas_of_expertise = models.ManyToManyField('Expertise', blank=True)
@@ -16,6 +17,14 @@ class Profile(models.Model):
     def __str__(self):
         return self.name
 
+    def save(self, *args, **kwargs):
+        """Singleton-like pattern:
+        Prevents creation of more than one Profile
+        Checks if PK exists so current Profile can be updated"""
+        if not self.pk and Profile.objects.exists():
+            raise ValidationError('You can only have one Profile')
+        return super(Profile, self).save(*args, **kwargs)
+
 
 class Expertise(models.Model):
     """ Associated with Profile and Projects (for filtering) """
@@ -27,6 +36,15 @@ class Expertise(models.Model):
 
     def __str__(self):
         return self.expertise
+
+    # Uncomment below to constrain expertises
+
+    # def save(self, *args, **kwargs):
+    #     """Limit expertises (up to 3)"""
+    #     if Expertise.objects.all().count() < 3:
+    #         return super(Expertise, self).save(*args, **kwargs)
+    #
+    #     raise ValidationError("Not a good practice to have more than 3 Expertises")
 
 
 class Competency(models.Model):
