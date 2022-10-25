@@ -1,13 +1,8 @@
 from django.db import models
 
-"""
-One profile holds many areas of expertise, many competencies and many projects.
-One project holds one category and many involved technologies.
-This way you can select one profile and access all necessary data.
-"""
-
 
 class Profile(models.Model):
+    """ Designed so you can access all data through Profile """
     name = models.CharField(max_length=50, null=True)
     nickname = models.CharField(max_length=20, null=True)
     areas_of_expertise = models.ManyToManyField('Expertise', blank=True)
@@ -23,7 +18,7 @@ class Profile(models.Model):
 
 
 class Expertise(models.Model):
-    """ Associated with Profile """
+    """ Associated with Profile and Projects (for filtering) """
     expertise = models.CharField(max_length=30, null=True)
 
     class Meta:
@@ -49,24 +44,12 @@ class Competency(models.Model):
 
 class Project(models.Model):
     """ Associated with Profile """
-    PROJECT_MANAGEMENT = 'PM'
-    SOFTWARE_DEVELOPMENT = 'SD'
-    ENTREPRENEURSHIP = 'EN'
-    SUSTAINABILITY = 'SU'
-
-    PROJECT_CATEGORY = (
-        (PROJECT_MANAGEMENT, 'Project Manager'),
-        (SOFTWARE_DEVELOPMENT, 'Software Development'),
-        (ENTREPRENEURSHIP, 'Entrepreneurship'),
-        (SUSTAINABILITY, 'Sustainability'),
-    )
-
     project_executive = models.ForeignKey('Profile', null=True, blank=True, on_delete=models.CASCADE)
     project_title = models.CharField(max_length=30, null=True)
     project_subtitle = models.CharField(max_length=100, null=True)
     project_technologies = models.ManyToManyField('Technologies', blank=True)
     project_image = models.URLField(null=True, blank=True)
-    project_category = models.CharField(max_length=2, choices=PROJECT_CATEGORY)
+    areas_of_expertise = models.ManyToManyField('Expertise', blank=True)
     project_description = models.TextField(null=True, blank=True)
     project_link = models.URLField(null=True, blank=True)
     project_button_description = models.CharField(max_length=50, null=True, blank=True)

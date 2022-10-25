@@ -2,6 +2,10 @@
     margin-top: 50px;
 }
 
+a:link.main-title {
+    color: black !important;
+}
+
 h6 .expertise {
     margin: 0 10px 0 10px;
 }

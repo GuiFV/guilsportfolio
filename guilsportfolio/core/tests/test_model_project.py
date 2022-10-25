@@ -1,6 +1,6 @@
 from django.core.exceptions import ValidationError
 from django.test import TestCase
-from guilsportfolio.core.models import Project, Technologies, Profile
+from guilsportfolio.core.models import Project, Technologies, Profile, Expertise
 
 
 class ProjectModelTest(TestCase):
@@ -39,7 +39,6 @@ class ProjectModelTest(TestCase):
             project_title='Project 1',
             project_subtitle='Some short description here',
             project_image='https://www.dropbox.com/s/0epvqodt0bj51gl/pixel_me.png?raw=1',
-            project_category='Software Development',
             project_description='Big text field here',
             project_link='https://www.dropbox.com/s/0epvqodt0bj51gl/pixel_me.png?raw=1',
             project_button_description='Check out this project',
@@ -67,19 +66,13 @@ class ProjectModelTest(TestCase):
         )
         self.assertEqual(1, self.project.project_technologies.count())
 
-    def test_category(self):
-        Project.objects.create(project_executive=self.profile,
-                               project_category=Project.PROJECT_CATEGORY,
-                               )
+    def test_has_areas_of_expertise(self):
+        """ Project has many areas of expertise and vice-versa"""
+        self.project.areas_of_expertise.create(
+            expertise='Software Developer'
+        )
+        self.assertEqual(1, self.project.areas_of_expertise.count())
 
-        self.assertTrue(Project.objects.exists())
-
-    def test_choices(self):
-        """ Project category should be limited to it's choices """
-        project = Project.objects.create(project_executive=self.profile,
-                                         project_category="A",
-                                         )
-        self.assertRaises(ValidationError, project.full_clean)
 
 # Technologies tests
 
@@ -90,9 +83,25 @@ class TechnologiesModelTest(TestCase):
             technology='Python'
         )
 
-    def test_create_expertise(self):
+    def test_create_technologies(self):
         self.assertTrue(Technologies.objects.exists())
 
-    def test_expertise_null(self):
+    def test_technologies_null(self):
         field = Technologies._meta.get_field('technology')
+        self.assertTrue(field.null)
+
+# Technologies tests
+
+
+class AreasOfExpertiseModelTest(TestCase):
+    def setUp(self):
+        self.expertise = Expertise.objects.create(
+            expertise='Software Developer'
+        )
+
+    def test_create_expertise(self):
+        self.assertTrue(Expertise.objects.exists())
+
+    def test_expertise_null(self):
+        field = Expertise._meta.get_field('expertise')
         self.assertTrue(field.null)
