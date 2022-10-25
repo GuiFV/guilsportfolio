@@ -55,3 +55,23 @@ a .new-tab {
     text-justify: inter-word;
     font-size: 0.9em;
 }
+
+.rotated {
+	-webkit-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+
+.material-symbols-outlined {
+  font-size: 0.4em;
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 200,
+  'GRAD' 200,
+  'opsz' 20
+}
+
+.proficiency {
+    margin: 0 -5px 0 -5px;
+}

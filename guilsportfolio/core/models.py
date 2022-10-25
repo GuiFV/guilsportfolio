@@ -31,8 +31,20 @@ class Expertise(models.Model):
 
 class Competency(models.Model):
     """ Associated with Profile """
+
+    ONE = 1
+    TWO = 2
+    THREE = 3
+
+    PROFICIENCY = (
+        (ONE, '1'),
+        (TWO, '2'),
+        (THREE, '3'),
+    )
+
     competency = models.CharField(max_length=20, null=True)
     icon = models.URLField(null=True, blank=True)
+    proficiency = models.PositiveSmallIntegerField(choices=PROFICIENCY, default=1)
 
     class Meta:
         verbose_name = 'competency'

@@ -1,3 +1,5 @@
+{% load range_tag %}
+
 <div aria-hidden="true" class="navdrawer" id="navdrawerDefault" tabindex="-1">
     <div class="navdrawer-content">
         <div class="navdrawer-header">
@@ -34,11 +36,17 @@
                             <div class="col col-12 text-center">
                                 <h6>Competencies</h6>
                                 {% for item in profile.competencies.all %}
-                                    <figure class="figure">
-                                        <img loading="lazy" class="img-fluid img-frame social-icons my-2" height="50px" width="50px" src="{{ item.icon }}" alt="{{ item.competency }}">
-                                        <br>
-                                        {{ item.competency }}
+
+                                    <figure class="figure my-3">
+                                        <img loading="lazy" class="img-fluid img-frame social-icons my-0" height="50px" width="50px" src="{{ item.icon }}" alt="{{ item.competency }}">
+                                        <p class="mb-0">{{ item.competency }}</p>
+
+                                        {% for star in item.proficiency|num_range %}
+                                            <span class="material-symbols-outlined proficiency text-warning mt-n1">star_rate</span>
+                                        {% endfor %}
+
                                     </figure>
+
                                 {% endfor %}
                             </div>
                         </div>
@@ -49,3 +57,4 @@
 
     </div>
 </div>
+

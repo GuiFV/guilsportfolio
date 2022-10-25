@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.test import TestCase
 from guilsportfolio.core.models import Profile, Expertise, Competency
 
@@ -86,6 +87,7 @@ class CompetencyModelTest(TestCase):
         self.competency = Competency.objects.create(
             competency='Software Developer',
             icon='https://www.dropbox.com/s/0epvqodt0bj51gl/pixel_me.png?raw=1',
+            proficiency=1,
         )
 
     def test_create_competency(self):
@@ -101,3 +103,7 @@ class CompetencyModelTest(TestCase):
         self.assertTrue(field1.null)
         self.assertTrue(field2.null)
 
+    def test_proficiency_choices(self):
+        """Competency should be limited to 1, 2 or 3"""
+        competency = Competency(competency=self.competency, proficiency=4)
+        self.assertRaises(ValidationError, competency.full_clean)
