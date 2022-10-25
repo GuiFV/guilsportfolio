@@ -7,7 +7,7 @@ from guilsportfolio.core.models import Profile, Project
 def home(request):
 
     profile = Profile.objects.first()  # Only one Profile is allowed in the DB
-    projects = Project.objects.filter(project_executive__name=profile.name)
+    projects = Project.objects.filter(executive__name=profile.name)
     display = None  # For filtering expertises and manipulating button's logic
 
     if request.GET.get('expertise'):

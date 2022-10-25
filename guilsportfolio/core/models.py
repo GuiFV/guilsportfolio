@@ -74,20 +74,20 @@ class Competency(models.Model):
 
 class Project(models.Model):
     """ Associated with Profile """
-    project_executive = models.ForeignKey('Profile', null=True, blank=True, on_delete=models.CASCADE)
-    project_title = models.CharField(max_length=30, null=True)
-    project_subtitle = models.CharField(max_length=100, null=True)
-    project_technologies = models.ManyToManyField('Technologies', blank=True)
-    project_image = models.URLField(null=True, blank=True)
+    executive = models.ForeignKey('Profile', null=True, blank=True, on_delete=models.CASCADE)
+    title = models.CharField(max_length=30, null=True)
+    subtitle = models.CharField(max_length=100, null=True)
+    technologies = models.ManyToManyField('Technologies', blank=True)
+    image = models.URLField(null=True, blank=True)
     areas_of_expertise = models.ManyToManyField('Expertise', blank=True)
-    project_description = models.TextField(null=True, blank=True)
-    project_link = models.URLField(null=True, blank=True)
-    project_button_description = models.CharField(max_length=50, null=True, blank=True)
-    project_position = models.IntegerField(null=True)
+    description = models.TextField(null=True, blank=True)
+    link = models.URLField(null=True, blank=True)
+    button_description = models.CharField(max_length=50, null=True, blank=True)
+    position = models.IntegerField(null=True)
     show_or_hide = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.project_title
+        return self.title
 
 
 class Technologies(models.Model):
