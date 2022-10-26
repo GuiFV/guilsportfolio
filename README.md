@@ -12,7 +12,7 @@ Contains:
 
 ## Development setup
 
-- requires python3
+- requires python 3
 
 1. clone repository
 2. create virtual environment with python3

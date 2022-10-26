@@ -6,23 +6,23 @@ from guilsportfolio.core.models import Project, Technologies, Profile, Expertise
 class ProjectModelTest(TestCase):
     def setUp(self):
         self.blank_fields = (
-            'project_executive',
-            'project_technologies',
-            'project_image',
-            'project_description',
-            'project_link',
-            'project_button_description',
+            'executive',
+            'technologies',
+            'image',
+            'description',
+            'link',
+            'button_description',
         )
 
         self.null_fields = (
-            'project_executive',
-            'project_title',
-            'project_subtitle',
-            'project_image',
-            'project_description',
-            'project_link',
-            'project_button_description',
-            'project_position',
+            'executive',
+            'title',
+            'subtitle',
+            'image',
+            'description',
+            'link',
+            'button_description',
+            'position',
         )
 
         self.profile = Profile.objects.create(
@@ -35,14 +35,14 @@ class ProjectModelTest(TestCase):
             email="some@email.com",
         )
         self.project = Project.objects.create(
-            project_executive=self.profile,
-            project_title='Project 1',
-            project_subtitle='Some short description here',
-            project_image='https://www.dropbox.com/s/0epvqodt0bj51gl/pixel_me.png?raw=1',
-            project_description='Big text field here',
-            project_link='https://www.dropbox.com/s/0epvqodt0bj51gl/pixel_me.png?raw=1',
-            project_button_description='Check out this project',
-            project_position='1',
+            executive=self.profile,
+            title='Project 1',
+            subtitle='Some short description here',
+            image='https://www.dropbox.com/s/0epvqodt0bj51gl/pixel_me.png?raw=1',
+            description='Big text field here',
+            link='https://www.dropbox.com/s/0epvqodt0bj51gl/pixel_me.png?raw=1',
+            button_description='Check out this project',
+            position='1',
             show_or_hide='True',
         )
 
@@ -61,10 +61,10 @@ class ProjectModelTest(TestCase):
 
     def test_has_technologies(self):
         """ Project has many technologies and vice-versa"""
-        self.project.project_technologies.create(
+        self.project.technologies.create(
             technology='Python'
         )
-        self.assertEqual(1, self.project.project_technologies.count())
+        self.assertEqual(1, self.project.technologies.count())
 
     def test_has_areas_of_expertise(self):
         """ Project has many areas of expertise and vice-versa"""

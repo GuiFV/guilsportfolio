@@ -2,6 +2,13 @@
     margin-top: 50px;
 }
 
+@media screen and (min-width: 992px) {
+    .main-body {
+        margin-left: 300px !important;
+        padding-right: 250px !important;
+    }
+}
+
 a:link.main-title {
     color: black !important;
 }
