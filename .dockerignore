@@ -1,0 +1,4 @@
+.venv/
+.env
+dbsqlite3-journal
+__pycache__
