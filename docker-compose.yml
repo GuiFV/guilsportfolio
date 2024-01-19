@@ -15,17 +15,17 @@ services:
       - 8000
     restart: unless-stopped
 
-  nginx:
-    build: ./nginx
-    ports:
-      - '80:80'
-      - '443:443'
-    volumes:
-      - ./staticfiles:/app/staticfiles
-    networks:
-      - guilsportfolio
-    depends_on:
-      - web
+#  nginx:
+#    build: ./nginx
+#    ports:
+#      - '80:80'
+#      - '443:443'
+#    volumes:
+#      - ./staticfiles:/app/staticfiles
+#    networks:
+#      - guilsportfolio
+#    depends_on:
+#      - web
 
 networks:
   guilsportfolio:
