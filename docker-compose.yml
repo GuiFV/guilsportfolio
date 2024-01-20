@@ -7,7 +7,6 @@ services:
     env_file: .env
     command: gunicorn --workers 3 --bind 0.0.0.0:8000 --timeout 500 guilsportfolio.wsgi:application
     volumes:
-      - ./staticfiles:/app/staticfiles
       - ./:/app
     expose:
       - 8000
