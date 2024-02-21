@@ -43,7 +43,7 @@ class ProjectModelTest(TestCase):
             link='https://www.dropbox.com/s/0epvqodt0bj51gl/pixel_me.png?raw=1',
             button_description='Check out this project',
             position='1',
-            show_or_hide='True',
+            show='True',
         )
 
     def test_create_profile(self):

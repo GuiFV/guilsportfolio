@@ -84,7 +84,7 @@ class Project(models.Model):
     link = models.URLField(null=True, blank=True)
     button_description = models.CharField(max_length=50, null=True, blank=True)
     position = models.IntegerField(null=True)
-    show_or_hide = models.BooleanField(default=False)
+    show = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title

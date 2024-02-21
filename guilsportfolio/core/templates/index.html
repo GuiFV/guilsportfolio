@@ -37,7 +37,7 @@
 
 
     {% for project in projects|dictsort:"position" %}
-        {% if project.show_or_hide %}
+        {% if project.show %}
             <div class="row project-row">
                 <div class="col">
                     <div class="media">
