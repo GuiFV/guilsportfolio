@@ -100,3 +100,37 @@ class Technologies(models.Model):
 
     def __str__(self):
         return self.technology
+
+
+class ExtraLink(models.Model):
+    extra = models.ForeignKey('Extra', null=True, blank=True, on_delete=models.CASCADE)
+    url_display = models.CharField(max_length=255)
+    url = models.URLField()
+    position = models.IntegerField(null=True)
+
+    def __str__(self):
+        return self.url_display
+
+
+class Extra(models.Model):
+    """ Associated with Profile """
+
+    AWARD = 'aw'
+    TALK = 'ta'
+    CERTIFICATION = 'ce'
+
+    TYPE = (
+        (AWARD, 'award'),
+        (TALK, 'talk'),
+        (CERTIFICATION, 'certification'),
+    )
+
+    profile = models.ForeignKey('Profile', null=True, blank=True, on_delete=models.CASCADE)
+    type = models.CharField(max_length=2, choices=TYPE, default=AWARD)
+    name = models.CharField(max_length=255, null=True, blank=True)
+    image = models.URLField(null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
+    position = models.IntegerField(null=True)
+
+    def __str__(self):
+        return self.name

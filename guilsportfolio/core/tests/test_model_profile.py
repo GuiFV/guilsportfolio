@@ -1,55 +1,33 @@
 from django.core.exceptions import ValidationError
-from django.test import TestCase
+from .test_setup import CommonTestSetup
 from guilsportfolio.core.models import Profile, Expertise, Competency
 
 
-class ProfileModelTest(TestCase):
-    def setUp(self):
-        self.blank_fields = (
-            'areas_of_expertise',
-            'picture',
-            'bio',
-            'competencies',
-            'github_link',
-            'linkedin_link',
-            'email',
-        )
-
-        self.null_fields = (
-            'name',
-            'nickname',
-            'picture',
-            'bio',
-            'github_link',
-            'linkedin_link',
-            'email',
-        )
-
-        self.profile = Profile.objects.create(
-            name="Guilherme Forton Viotti",
-            nickname="Guil",
-            picture="https://www.dropbox.com/s/0epvqodt0bj51gl/pixel_me.png?raw=1",
-            bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-            github_link="https://github.com/GuiFV",
-            linkedin_link="https://www.linkedin.com/in/guilhermeviotti/",
-            email="some@email.com",
-        )
+class ProfileModelTest(CommonTestSetup):
 
     def test_create_profile(self):
         self.assertTrue(Profile.objects.exists())
 
-    def test_create_more_than_one_profile(self):
-        """There can only be one Profile"""
-        self.profile2 = Profile.objects.create(id=2, name="Profile2")
-        self.assertTrue(2, self.profile2)
+    def test_cannot_create_more_than_one_profile(self):
+        """Test that only one Profile can be created"""
+        with self.assertRaises(ValidationError):
+            Profile.objects.create(
+                name="Test Profile 2",
+                nickname="Test 2",
+                picture="https://example.com/picture2.png",
+                bio="Test bio 2",
+                github_link="https://github.com/testuser2",
+                linkedin_link="https://www.linkedin.com/in/testuser2/",
+                email="test2@email.com",
+            )
 
     def test_blank_fields(self):
-        for field in self.blank_fields:
+        for field in self.profile_blank_fields:
             test_field = Profile._meta.get_field(field)
             self.assertTrue(test_field.blank)
 
     def test_null_fields(self):
-        for field in self.null_fields:
+        for field in self.profile_null_fields:
             test_field = Profile._meta.get_field(field)
             self.assertTrue(test_field.null)
 
@@ -71,7 +49,7 @@ class ProfileModelTest(TestCase):
 # Expertise tests
 
 
-class ExpertiseModelTest(TestCase):
+class ExpertiseModelTest(CommonTestSetup):
     def setUp(self):
         self.expertise = Expertise.objects.create(
             expertise='Software Developer'
@@ -87,7 +65,7 @@ class ExpertiseModelTest(TestCase):
 # Competency tests
 
 
-class CompetencyModelTest(TestCase):
+class CompetencyModelTest(CommonTestSetup):
     def setUp(self):
         self.competency = Competency.objects.create(
             competency='Software Developer',
