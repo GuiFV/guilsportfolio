@@ -2,12 +2,22 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-TL0CX348F9"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-TL0CX348F9');
+        </script>
         <title>{% block title %}Guil's Portfolio{% endblock title %}</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="Guil's Portfolio">
         <meta name="author" content="Guilherme Forton Viotti">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta property="og:image" content="{% static 'img/logo.png' %}">
 
         <!-- Favicon -->
         <link rel="shortcut icon" href="https://res.cloudinary.com/dpazaz3ig/image/upload/v1666603247/portfolio/favicon_wb44bl.ico">
