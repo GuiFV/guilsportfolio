@@ -41,7 +41,13 @@
             <div class="row project-row">
                 <div class="col">
                     <div class="media">
-                        <img loading="lazy" class="img-fluid img-frame border" height="240px" width="240px" src="{{ project.image }}" alt="image of project '{{ project.title }}'">
+                        {% if project.link %}
+                            <a href="{{ project.link }}" target="_blank">
+                                <img loading="lazy" class="img-fluid img-frame border" height="240px" width="240px" src="{{ project.image }}" alt="image of project '{{ project.title }}'">
+                            </a>
+                        {% else %}
+                            <img loading="lazy" class="img-fluid img-frame border" height="240px" width="240px" src="{{ project.image }}" alt="image of project '{{ project.title }}'">
+                        {% endif %}
                         <div class="media-body">
                             <h4 class="mt-0"><b>{{ project.title }}</b></h4>
                             <p class="subtitle">{{ project.subtitle }}<br>
