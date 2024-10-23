@@ -12,7 +12,7 @@
             <form action="" method="get">
                 <h6>
 
-                    {% for expertise in profile.areas_of_expertise.all %}
+                    {% for expertise in expertises %}
                         <span class="expertise">
                             <input class="btn btn-sm btn-shaped {% if display == expertise|slugify %} active shadow-4 {% endif %}" type="submit" name="expertise" value="{{ expertise }}">
                         </span>
