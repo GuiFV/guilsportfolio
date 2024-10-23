@@ -40,7 +40,7 @@
         {% if project.show %}
             <div class="row project-row">
                 <div class="col">
-                    <div class="media">
+                    <div class="media flex-column flex-md-row align-items-center">
                         {% if project.link %}
                             <a href="{{ project.link }}" target="_blank">
                                 <img loading="lazy" class="img-fluid img-frame border" height="240px" width="240px" src="{{ project.image }}" alt="image of project '{{ project.title }}'">
@@ -48,7 +48,7 @@
                         {% else %}
                             <img loading="lazy" class="img-fluid img-frame border" height="240px" width="240px" src="{{ project.image }}" alt="image of project '{{ project.title }}'">
                         {% endif %}
-                        <div class="media-body">
+                        <div class="media-body mt-3 mt-md-0 ml-md-4">
                             <h4 class="mt-0"><b>{{ project.title }}</b></h4>
                             <p class="subtitle">{{ project.subtitle }}<br>
                                 {% for tech in project.technologies.all %}
@@ -67,7 +67,7 @@
             </div>
         {% endif %}
     {% endfor %}
-    
+
 {#    AWARDS MODAL #}
     <div class="modal fade" id="awardsModal" tabindex="-1"  aria-labelledby="awardsModal" aria-hidden="true">
       <div class="modal-dialog">
@@ -79,13 +79,13 @@
             </button>
           </div>
           <div class="modal-body">
-          
+
               {% for item in extras|dictsort:"position" %}
                   {% if item.type == 'aw' %}
-                      
+
                       <div class="row my-3">
                         <div class="col">
-                          
+
                             <img loading="lazy" class="img-fluid img-frame border" height="512px" width="512px" src="{{ item.image }}" alt="image of award '{{ item.name }}'">
                             <h6 class="text-center mt-2">{{ item.name }}</h6>
                             <small><i>{{ item.description }}</i></small>
@@ -95,19 +95,19 @@
                                     <small><a href="{{ extra_link.url }}" target="_blank">{{ extra_link.url_display }}</a><br></small>
                                 {% endfor %}
                             {% endif %}
-                          
+
                         </div>
                       </div>
                       <hr>
 
                   {% endif %}
               {% endfor %}
-              
+
           </div>
         </div>
       </div>
     </div>
-    
+
 {#    TALKS MODAL #}
     <div class="modal fade" id="talksModal" tabindex="-1"  aria-labelledby="talksModal" aria-hidden="true">
       <div class="modal-dialog">
@@ -125,30 +125,30 @@
 
                     <div class="row my-3">
                         <div class="col">
-                          
+
                             <img loading="lazy" class="img-fluid img-frame border" height="512px" width="512px" src="{{ item.image }}" alt="image of award '{{ item.name }}'">
                             <h6 class="text-center mt-2">{{ item.name }}</h6>
                             <small><i>{{ item.description }}</i></small>
-                            
+
                             {% if item.extralink_set.all %}
                                 <br><br><small><b>Links:</b></small><br>
                                 {% for extra_link in item.extralink_set.all|dictsort:"position" %}
                                     <small><a href="{{ extra_link.url }}" target="_blank">{{ extra_link.url_display }}</a><br></small>
                                 {% endfor %}
                             {% endif %}
-                          
+
                         </div>
                       </div>
                       <hr>
 
                   {% endif %}
               {% endfor %}
-              
+
           </div>
         </div>
       </div>
     </div>
-    
+
 {#    CERTIFICATIONS MODAL #}
     <div class="modal fade" id="certificationsModal" tabindex="-1"  aria-labelledby="certificationsModal" aria-hidden="true">
       <div class="modal-dialog">
@@ -166,7 +166,7 @@
 
                     <div class="row my-3">
                         <div class="col">
-                          
+
                             <img loading="lazy" class="img-fluid img-frame border" height="512px" width="512px" src="{{ item.image }}" alt="image of award '{{ item.name }}'">
                             <h6 class="text-center mt-2">{{ item.name }}</h6>
                             <small><i>{{ item.description }}</i></small>
@@ -176,14 +176,14 @@
                                     <small><a href="{{ extra_link.url }}" target="_blank">{{ extra_link.url_display }}</a><br></small>
                                 {% endfor %}
                             {% endif %}
-                          
+
                         </div>
                       </div>
                       <hr>
 
                   {% endif %}
               {% endfor %}
-              
+
           </div>
         </div>
       </div>
