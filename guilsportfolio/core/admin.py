@@ -4,7 +4,7 @@ from guilsportfolio.core.models import Profile, Expertise, Competency, Project, 
 
 
 class ProjectModelAdmin(admin.ModelAdmin):
-    list_display = ['position', 'title']
+    list_display = ['show', 'position', 'title']
 
 
 admin.site.register(Profile)
