@@ -154,7 +154,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="certificationsModal">Certifications</h5>
+            <h5 class="modal-title" id="certificationsModal">Certificates</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -163,6 +163,46 @@
 
               {% for item in extras|dictsort:"position" %}
                   {% if item.type == 'ce' %}
+
+                    <div class="row my-3">
+                        <div class="col">
+
+                            <img loading="lazy" class="img-fluid img-frame border" height="512px" width="512px" src="{{ item.image }}" alt="image of award '{{ item.name }}'">
+                            <h6 class="text-center mt-2">{{ item.name }}</h6>
+                            <small><i>{{ item.description }}</i></small>
+                            {% if item.extralink_set.all %}
+                                <br><br><small><b>Links:</b></small><br>
+                                {% for extra_link in item.extralink_set.all|dictsort:"position" %}
+                                    <small><a href="{{ extra_link.url }}" target="_blank">{{ extra_link.url_display }}</a><br></small>
+                                {% endfor %}
+                            {% endif %}
+
+                        </div>
+                      </div>
+                      <hr>
+
+                  {% endif %}
+              {% endfor %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {#    PAPERS MODAL #}
+    <div class="modal fade" id="papersModal" tabindex="-1"  aria-labelledby="papersModal" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="papersModal">Papers</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+              {% for item in extras|dictsort:"position" %}
+                  {% if item.type == 'pa' %}
 
                     <div class="row my-3">
                         <div class="col">

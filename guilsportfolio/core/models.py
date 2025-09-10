@@ -118,11 +118,13 @@ class Extra(models.Model):
     AWARD = 'aw'
     TALK = 'ta'
     CERTIFICATION = 'ce'
+    PAPER = 'pa'
 
     TYPE = (
         (AWARD, 'award'),
         (TALK, 'talk'),
         (CERTIFICATION, 'certification'),
+        (PAPER, 'paper'),
     )
 
     profile = models.ForeignKey('Profile', null=True, blank=True, on_delete=models.CASCADE)
