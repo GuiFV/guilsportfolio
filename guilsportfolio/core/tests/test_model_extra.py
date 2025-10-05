@@ -17,7 +17,7 @@ class ExtraModelTest(CommonTestSetup):
         """ Check if type defaults to AWARD """
         field = Extra._meta.get_field('type')
         # Check if 'type' field has correct choices set
-        self.assertEqual(field.choices, Extra.TYPE)
+        self.assertEqual(field.choices, list(Extra.TYPE))
         # Check if 'type' field defaults to AWARD
         self.assertEqual(self.extra.type, Extra.AWARD)
 
